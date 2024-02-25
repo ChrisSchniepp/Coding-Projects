@@ -1,16 +1,42 @@
 import random
-x = int(input("enter number pls 1-100 "))
 
+# Varible Declarations
 a = []
+b = []
 i = 0
-while i < 25:
-    n = random.randint(1,100)
+
+# Make two random lists, one half the size of the other
+while i < 10:
+    n = random.randint(1,10)
     a.insert(i,n)
+    if i<7:
+        b.append(random.randint(1,10))
     i=i+1
-b = []    
-for i in range(0,len(a)):
-    if a[i] < x:
-        b.append(a[i])
-        b.sort()
+
+#creates d which is a but with no duplicates
+d = a[:]
+d.sort()
+a.sort()
+b.sort()
+iii = 0
+for i in range(1,len(a)):
+    ii = i-1
+    if a[i]==a[ii]:
+        del d[i-iii]
+        iii = 1+iii
+
+# Now find the common parts between each list
+c = []    
+for i in d:
+    for ii in b:
+        if i == ii:
+            c.append(i)
+            break
+
+
+
+
 print(a,len(a))
+print(d,len(d))
 print(b,len(b))
+print(c,len(c))
