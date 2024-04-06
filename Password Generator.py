@@ -13,7 +13,6 @@ def upper_and_lower(w):
     w_new = list(w)
     r1 = random.randint(0,len(w))
     capital = []
-
     for i in range(0,r1):
         while True:
             r2 = random.randint(0,len(w)-1)
@@ -35,13 +34,15 @@ def generate(x):
             else:
                 continue
         else:
-            r3 = random.randint(0,len(WORDS)-1)
-            w2 = WORDS[r3].decode('ASCII')
-            w3 = upper_and_lower(w2)
-            if len(w + w3) <= x:
-                w = w + w3
-            else:
-                continue
+            while len(w) + 1 != x:
+                r3 = random.randint(0,len(WORDS)-1)
+                w2 = WORDS[r3].decode('ASCII')
+                w3 = upper_and_lower(w2)
+                if len(w + w3) <= x:
+                    w = w + w3
+                    break
+                else:
+                    continue
     return w        
 
 x = int(input("Welcome to the pasword generator! Please enter a number for the length of your new Password "))
